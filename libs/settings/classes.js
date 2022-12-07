@@ -12,13 +12,14 @@
 /* jshint esversion:8 */
 
 class Input {
-  constructor({path, type, name, value, pattern, min, max, step, checked, disabled, required, auto, onchange, onfocus, onblur, text, iText, n}){
+  constructor({path, type, name, id, value, pattern, min, max, step, checked, disabled, required, auto, onchange, onfocus, onblur, text, iText, n}){
     this.div=document.createElement('div');
     path.appendChild(this.div);
     this.input=document.createElement('input');
     this.input.className='input';
     this.input.name=name;
     this.input.type=type;
+    id ? this.input.id=id : '';
     required ? this.input.setAttribute('required', '') : '';
     checked ? this.input.checked=checked : '';
     disabled ? this.input.disabled=true : '';
