@@ -114,3 +114,44 @@ class Field {
     return this.field;
   }
 }
+
+function getSettings(){
+  let o = {};
+  for(let i = 0, arr = document.querySelectorAll(`fieldset`); i < arr.length; i++){
+    // console.log(arr)
+    o[arr[i].getAttribute('groupName')] ? '' : o[arr[i].getAttribute('groupName')] = {};
+    for(let item = 0, a = arr[i].children; item < a.length; item++){
+      a[item].children[0] ? (a[item].children[0].tagName === 'INPUT' ? o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : a[item].children[0].value) : '') : '';
+    }
+  }
+  return o;
+}
+
+function hexConverter(hex) {
+  return `${parseInt(hex.substr(1,2), 16)} ${parseInt(hex.substr(3,2), 16)} ${parseInt(hex.substr(5,2), 16)}`
+}
+function rgbConverter(rgb) {
+  rgb = rgb.split(' ');
+  let color = {
+    r: (+rgb[0]).toString(16),
+    g: (+rgb[1]).toString(16),
+    b: (+rgb[2]).toString(16)
+  }
+
+  if (color.r.length == 1)
+    color.r = "0" + color.r;
+  if (color.g.length == 1)
+    color.g = "0" + color.g;
+  if (color.b.length == 1)
+    color.b = "0" + color.b;
+
+  return `#${color.r}${color.g}${color.b}`;
+}
+function rgbaConverter(rgb, opacity){
+  return `(${rgb} / ${opacity})`
+}
+
+function fieldDisable(target){
+  target.disabled = true;
+  target.classList.toggle('show');
+}
