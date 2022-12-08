@@ -34,6 +34,21 @@ let style = `
 .DTF-settingsOpener:hover .list,
 .DTF-settingsOpener .list:hover {
   display: block;
+}
+
+.DTF-settings {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 115;
+  background: rgb(255 255 255);
+  padding: 3px;
+  max-width: 50%;
+}
+.DTF-settings fieldset {
+  border: 1px solid black;
+  margin: 5px 0px 5px 0px;
+  padding: 3px;
 }`;
 
 new CssAppend('DTF-settingsOpener', style);
