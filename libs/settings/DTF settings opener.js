@@ -46,8 +46,6 @@ class SettingsOpener{
     
     this.list=document.createElement('div');
     this.list.className='list';
-    this.list.style=`
-      display: none;`;
     this.main.appendChild(this.list);
   }
 }
