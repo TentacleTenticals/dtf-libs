@@ -75,6 +75,9 @@ let style = `
   max-width: 50%;
   box-shadow: 0px 0px 2px 1px rgb(0 0 0);
 }
+.DTF-settings input {
+  width: max-content;
+}
 .DTF-settings fieldset {
   border: 1px solid black;
   margin: 5px 0px 5px 0px;
