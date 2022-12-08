@@ -73,6 +73,7 @@ let style = `
   background: rgb(255 255 255);
   padding: 3px;
   max-width: 50%;
+  box-shadow: 0px 0px 2px 1px rgb(0 0 0);
 }
 .DTF-settings fieldset {
   border: 1px solid black;
