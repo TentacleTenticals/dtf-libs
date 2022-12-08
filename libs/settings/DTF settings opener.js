@@ -11,10 +11,26 @@
 // ==/UserScript==
 /* jshint esversion:8 */
 
-new CssAppend('DTF-settingsOpener', `
-.DTF-settingsOpener:hover .list {
+let style = `
+.settingsOpener {
+  top: 19px;
+  right: 257px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  z-index: 1000;
+}
+.settingsOpener .list {
+  display: none;
+}
+.settingsOpener:hover .list,
+.settingsOpener .list:hover {
   display: block;
-}`)
+}`;
+
+new CssAppend('DTF-settingsOpener', style);
 
 class SettingsOpener{
   constructor(path){
