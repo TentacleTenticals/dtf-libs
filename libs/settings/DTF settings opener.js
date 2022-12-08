@@ -34,6 +34,17 @@ let style = `
 .DTF-settingsOpener:hover .list,
 .DTF-settingsOpener .list:hover {
   display: block;
+  margin-top: 3px;
+  padding: 1px 3px 3px 3px;
+  box-shadow: 0px 0px 2px 1px rgb(0 0 0);
+}
+.DTF-settingsOpener .list .btn {
+  background: rgb(216 234 249);
+  font-size: 13px;
+  border: 1px solid rgb(0 0 0);
+  border-radius: 3px;
+  padding: 1px 3px 1px 3px;
+  cursor: pointer;
 }
 
 .DTF-settings {
