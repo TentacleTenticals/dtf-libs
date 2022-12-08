@@ -12,7 +12,7 @@
 /* jshint esversion:8 */
 
 let style = `
-.settingsOpener {
+.DTF-settingsOpener {
   top: 19px;
   right: 257px;
   position: absolute;
@@ -22,11 +22,11 @@ let style = `
   flex-wrap: nowrap;
   z-index: 1000;
 }
-.settingsOpener .list {
+.DTF-settingsOpener .list {
   display: none;
 }
-.settingsOpener:hover .list,
-.settingsOpener .list:hover {
+.DTF-settingsOpener:hover .list,
+.DTF-settingsOpener .list:hover {
   display: block;
 }`;
 
