@@ -21,6 +21,7 @@ class DtfHeader{
     display: flex;
     width: 100%;
     background-color: rgb(0 0 0);
+    color: rgb(255 255 255);
     `;
     path.parentNode.insertBefore(this.main, where);
   }
