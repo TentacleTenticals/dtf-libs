@@ -66,6 +66,7 @@ new CssAppend('DTF-settingsOpener', style);
 
 class SettingsOpener{
   constructor(path){
+    if(document.getElementById('DTF-settingsOpener')) return;
     this.main=document.createElement('div');
     this.main.className='DTF-settingsOpener';
     this.main.id='DTF-settingsOpener';
