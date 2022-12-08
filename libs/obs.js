@@ -11,6 +11,7 @@
 // ==/UserScript==
 /* jshint esversion:8 */
 
+let obs;
 function observer({target, search, msg, func}){
   if(!target) return;
   let o;
