@@ -15,7 +15,7 @@ let style = `
 .DTF-settingsOpener {
   top: 19px;
   right: 257px;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -66,7 +66,7 @@ let style = `
 }
 
 .DTF-settings {
-  position: absolute;
+  position: fixed;
   top: 0px;
   left: 0px;
   z-index: 115;
