@@ -90,6 +90,11 @@ class SettingsOpener{
     this.main.id='DTF-settingsOpener';
     path.appendChild(this.main);
     
+    this.label=document.createElement('div');
+    this.label.className='label';
+    this.label.textContent='Настройки скриптов';
+    this.main.appendChild(this.label);
+    
     this.header=document.createElement('div');
     this.header.className='header';
     this.header.textContent='🛠️';
