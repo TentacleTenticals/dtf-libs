@@ -21,10 +21,24 @@ let style = `
   align-items: flex-end;
   flex-wrap: nowrap;
   z-index: 1000;
-  color: rgb(227 170 237);
+  color: rgb(0 0 0);
   padding: 2px 2px 2px 2px;
   line-height: unset;
   font-size: 19px;
+  background: rgb(255 255 255);
+  box-shadow: 0px 0px 2px 1px rgb(0 0 0);
+}
+.DTF-settingsOpener .label {
+  display: none;
+  position: absolute;
+  float: left;
+  font-size: 12px;
+  text-align: center;
+  top: 5px;
+  left: 5px;
+}
+.DTF-settingsOpener:hover .label {
+  display: block;
 }
 .DTF-settingsOpener .list {
   display: none;
@@ -34,6 +48,7 @@ let style = `
 .DTF-settingsOpener:hover .list,
 .DTF-settingsOpener .list:hover {
   display: block;
+  background: rgb(255,255,255);
   margin-top: 3px;
   padding: 1px 3px 3px 3px;
   box-shadow: 0px 0px 2px 1px rgb(0 0 0);
@@ -45,6 +60,9 @@ let style = `
   border-radius: 3px;
   padding: 1px 3px 1px 3px;
   cursor: pointer;
+}
+.DTF-settingsOpener .list .btn:hover {
+  background: rgb(203 232 255);
 }
 
 .DTF-settings {
