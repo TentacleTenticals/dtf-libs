@@ -21,9 +21,15 @@ let style = `
   align-items: flex-end;
   flex-wrap: nowrap;
   z-index: 1000;
+  color: rgb(227 170 237);
+  padding: 2px 2px 2px 2px;
+  line-height: unset;
+  font-size: 19px;
 }
 .DTF-settingsOpener .list {
   display: none;
+  background: rgb(255,255,255);
+  color: rbg(0,0,0);
 }
 .DTF-settingsOpener:hover .list,
 .DTF-settingsOpener .list:hover {
