@@ -46,8 +46,10 @@ class Input {
 
 class Select {
   constructor({path, label, value, options}){
+    this.div=document.createElement('div');
+    path.appendChild(this.div);
     this.main=document.createElement('select');
-    path.appendChild(this.main);
+    this.div.appendChild(this.main);
 
     options.forEach(e => {
       new Option({
@@ -59,7 +61,7 @@ class Select {
 
     this.label=document.createElement('label');
     this.label.textContent=label;
-    path.appendChild(this.label);
+    this.div.appendChild(this.label);
   }
 }
 class Option{
