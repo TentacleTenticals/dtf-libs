@@ -235,6 +235,6 @@ function mergeSettings(def, sav){
           sav[item] === undefined ? tg[item] = def[item] : tg[item] = sav[item];
       }
   }
-  console.log(`[init] Настройки успешно совмещены`, tg);
+  console.log(`[Init] Настройки успешно совмещены`, tg);
   return tg;
 }
