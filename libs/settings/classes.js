@@ -122,7 +122,7 @@ function getSettings(){
     // console.log(arr)
     o[arr[i].getAttribute('groupName')] ? '' : o[arr[i].getAttribute('groupName')] = {};
     for(let item = 0, a = arr[i].children; item < a.length; item++){
-      a[item].children[0] ? (a[item].children[0].tagName === 'INPUT' ? o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : a[item].children[0].value) : '') : '';
+      a[item].children[0] ? (a[item].children[0].tagName.match(/INPUT|SELECT/) ? o[arr[i].getAttribute('groupName')][a[item].children[0].name] = (a[item].children[0].type === 'checkbox' ? a[item].children[0].checked : a[item].children[0].value) : '') : '';
     }
   }
   return o;
