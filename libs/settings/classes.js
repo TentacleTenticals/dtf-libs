@@ -45,10 +45,11 @@ class Input {
 }
 
 class Select {
-  constructor({path, label, value, options}){
+  constructor({path, label, name, value, options}){
     this.div=document.createElement('div');
     path.appendChild(this.div);
     this.main=document.createElement('select');
+    this.main.name=name;
     this.div.appendChild(this.main);
 
     options.forEach(e => {
@@ -110,6 +111,7 @@ class Field {
       new Select({
         path: this.field,
         label: e.label,
+        name: e.name,
         value: e.value,
         options: e.options
       })
