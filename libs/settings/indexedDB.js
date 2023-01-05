@@ -135,7 +135,7 @@ function deleteFromDB(db, key) {
 async function settingsLoader(db) {
   if(!db.indexedDB){
     console.log('Ваш браузер не поддерживает базу данных `indexedDB`, которую использует данный скрипт для хранения настроек.\nБудет использоваться дефолтный список настроек...если вы всё же хотите использовать свои собственные настройки, отредактируйте скрипт, импортировав в него свои настройки.');
-    return init();
+    return init(false, initCfg);
   }else
   {
     if(!(await indexedDB.databases()).map(ind => ind.name).includes(db.name)){
@@ -146,7 +146,7 @@ async function settingsLoader(db) {
       //     console.log(res)
       //   })
       // })
-        return init();
+        return init(false, initCfg);
     }else{
       console.log(`[indexedDB] База данных ${db.name} существует. Сейчас я проверю её на наличие сохранённых настроек.`);
       connectDB(db)
@@ -154,16 +154,16 @@ async function settingsLoader(db) {
         readDB(db, 'settings').then(res => {
           if(res.status === 'fail'){
             console.log(`[indexedDB] База данных ${db.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
-            init();
+            init(false, initCfg);
           }else
           {
             console.log(`[indexedDB] В базе данных ${db.name} найдены сохранённые настройки, загружаю их.`);
-            init(res.data.settings);
+            init(res.data.settings, initCfg);
           }
         }).catch(err => {
           console.log(err)
           console.log(`[indexedDB] Произошла ошибка, или база данных ${db.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
-          init();
+          init(false, initCfg);
           // connectDB(db)
           // .then(() => {
           //     addToDB(db, {...db.data, settings:defaultSettings}).then(res => {
@@ -190,7 +190,7 @@ function settingsUpdater(db, settings){
           console.log(`В базе данных ${db.name} найдены сохранённые настройки. Будет выполнено обновление.`);
           updateDataInDB(db, 'settings', {...db.data, settings:settings}).then(res => {
             console.log('Upddated', res.status);
-            init(settings);
+            init(settings, initCfg);
           }).catch(err => console.log(err))
         }
       }).catch(err => {
@@ -199,7 +199,7 @@ function settingsUpdater(db, settings){
           connectDB(db).then(res => {
             addToDB(db, {...db.data, settings:settings}).then(res => {
               console.log(res)
-              init(settings);
+              init(settings, initCfg);
             }).catch(err => {
               console.log(err)
             });
@@ -235,6 +235,6 @@ function mergeSettings(def, sav){
           sav[item] === undefined ? tg[item] = def[item] : tg[item] = sav[item];
       }
   }
-  console.log(`[init] Настройки успешно совмещены`, tg);
+  console.log(`[Init] Настройки успешно совмещены`, tg);
   return tg;
 }
