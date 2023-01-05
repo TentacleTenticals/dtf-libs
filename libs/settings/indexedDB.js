@@ -152,18 +152,12 @@ async function settingsLoader(db) {
   {
     if(!(await indexedDB.databases()).map(ind => ind.name).includes(db.name)){
       console.log(`[indexedDB] Базы данных ${db.name} не найдено. Будут использованы дефолтные настройки.`);
-      // connectDB(db)
-      // .then(() => {
-      //   createDB(db, {...db.data, settings:defaultSettings}).then(res => {
-      //     console.log(res)
-      //   })
-      // })
         return init(false, initCfg);
     }else{
       console.log(`[indexedDB] База данных ${db.name} существует. Сейчас я проверю её на наличие сохранённых настроек.`);
       connectDB(db)
       .then(() => {
-        readDB(db, 'settings').then(res => {
+        readDB(db, db.data.uid).then(res => {
           if(res.status === 'fail'){
             console.log(`[indexedDB] База данных ${db.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
             init(false, initCfg);
@@ -176,14 +170,6 @@ async function settingsLoader(db) {
           console.log(err)
           console.log(`[indexedDB] Произошла ошибка, или база данных ${db.name} существует, но нет сохранённых настроек. Будут использованы дефолтные настройки.`);
           init(false, initCfg);
-          // connectDB(db)
-          // .then(() => {
-          //     addToDB(db, {...db.data, settings:defaultSettings}).then(res => {
-          //       console.log(res)
-          //     }).catch(err => {
-          //       console.log(err)
-          //   })
-          // })
         })
       }).catch(err => console.log(err));
     }
@@ -197,7 +183,7 @@ function settingsUpdater(db, settings){
   {
     connectDB(db)
     .then(() => {
-      readDB(db, 'settings').then(res => {
+      readDB(db, db.data.uid).then(res => {
         if(res.status === 'success' && res.type === 'data search'){
           console.log(`В базе данных ${db.name} найдены сохранённые настройки. Будет выполнено обновление.`);
           updateDataInDB(db, 'settings', {...db.data, settings:settings}).then(res => {
@@ -209,7 +195,7 @@ function settingsUpdater(db, settings){
         if(err.status === 'fail'){
           console.log(`База данных ${db.name} существует, но не сохранённые настройки. Будут сохранены новые настройки.`);
           connectDB(db).then(res => {
-            addToDB(db, {...db.data, settings:settings}).then(res => {
+            addToDB(db, {...db.data, data:settings}).then(res => {
               console.log(res)
               init(settings, initCfg);
             }).catch(err => {
