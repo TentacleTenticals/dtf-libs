@@ -209,9 +209,9 @@ function rgbaConverter(rgb, opacity){
 };
 
 // Функция инициализации скрипта
-function init(name, id, settings, func){
-  settings ? mainSettings = mergeSettings(defaultSettings, settings) : mainSettings = defaultSettings;
-  if(!document.getElementById('stg-DTF-feeds')) new SettingsItem(name, id);
-  func();
+function init(s){
+  s.settings ? mainSettings = mergeSettings(defaultSettings, s.settings) : mainSettings = defaultSettings;
+  if(!document.getElementById(`stg-DTF-${s.id}`)) new SettingsItem(s.name, s.id);
+  s.func();
   console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainSettings);
 };
