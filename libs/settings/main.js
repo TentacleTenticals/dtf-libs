@@ -84,7 +84,7 @@ let style = `
   padding: 3px;
 }`;
 
-new CSS(false, style);
+new Css(false, style);
 
 // Активация при загрузке страницы
 function onPageLoad(run){
