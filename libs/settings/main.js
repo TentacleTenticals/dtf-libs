@@ -229,6 +229,7 @@ function rgbaConverter(rgb, opacity){
 // Функция инициализации скрипта
 function init(settings, s){
   settings ? mainSettings = mergeSettings(defaultSettings, settings) : mainSettings = defaultSettings;
+  new SettingsOpener();
   if(!document.getElementById(`stg-DTF-${s.id}`)) new SettingsItem(s.name, s.id);
   s.func();
   console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainSettings);
