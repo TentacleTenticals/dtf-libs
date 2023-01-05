@@ -186,7 +186,7 @@ function settingsUpdater(db, settings){
       readDB(db, db.data.uid).then(res => {
         if(res.status === 'success' && res.type === 'data search'){
           console.log(`В базе данных ${db.name} найдены сохранённые настройки. Будет выполнено обновление.`);
-          updateDataInDB(db, 'settings', {...db.data, db:settings}).then(res => {
+          updateDataInDB(db, db.data.uid, {...db.data, db:settings}).then(res => {
             console.log('Upddated', res.status);
             init(settings, initCfg);
           }).catch(err => console.log(err))
