@@ -78,8 +78,8 @@ function createDB(db, data) {
 function addToDB(db, data) {
   return new Promise((resolve, reject) => {
     var trx = db.connect.transaction([db.store], "readwrite").objectStore(db.store);
-    data.map(i => trx.add(i));
-//     trx.add(data);
+//     data.map(i => trx.add(i));
+    trx.add(data);
     resolve({status:'success', type:'data writing', msg:`[addToDB] ${db.store}, задача по добавлению настроек в базу данных успешно завершена.`});
     trx.onerror = (e) => {
       reject(e);
