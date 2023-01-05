@@ -11,6 +11,18 @@
 // ==/UserScript==
 /* jshint esversion:8 */
 
+let db = {
+  indexedDB: (window.indexedDB||window.mozIndexedDB||window.webkitIndexedDB||window.msIndexedDB||window.shimIndexedDB),
+  name: "DTF scripts database",
+  version: 1,
+  store: initCfg.storeName,
+  key: "uid",
+  data: {
+    uid: 'settings',
+    description: initCfg.storeDesc
+  }
+};
+
 async function connectDB(db, resolve, reject) {
   return new Promise((resolve, reject) => {  
     var req = indexedDB.open(db.name, db.version);
