@@ -11,6 +11,16 @@
 // ==/UserScript==
 /* jshint esversion:8 */
 
+// Класс для добавления CSS
+class Css{
+  constructor(title, style){
+    this.css=document.createElement('style');
+    title ? this.css.title=title : '';
+    this.css.textContent=style;
+    document.body.appendChild(this.css);
+  }
+};
+
 let style = `
 .DTF-settingsOpener {
   top: 19px;
@@ -102,16 +112,6 @@ function onPageLoad(run){
     }
     log(...args);
   }}
-};
-
-// Класс для добавления CSS
-class Css{
-  constructor(title, style){
-    this.css=document.createElement('style');
-    title ? this.css.title=title : '';
-    this.css.textContent=style;
-    document.body.appendChild(this.css);
-  }
 };
 
 // Класс открытия настроек
